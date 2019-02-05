@@ -2,7 +2,6 @@
 # Övning 6. Bibliotek
 # libresistance.so
 # VT2019
-# Magnus Sjögren 780410-4136
 
 CC=gcc
 INCDIR=.
