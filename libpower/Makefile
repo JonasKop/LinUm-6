@@ -17,7 +17,7 @@ libpower.so: libpower.o
 	gcc -shared -o libpower.so libpower.o
 
 clean:
-	rm *.so *.o
+	rm *.so *.o *.gch
 
 install:
 	chmod 644 libpower.so
