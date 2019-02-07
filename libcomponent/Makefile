@@ -19,7 +19,7 @@ install:
 	mkdir -p /usr/local/lib/linum && cp libcomponent.so /usr/local/lib/linum
 
 uninstall:
-	rm /usr/local/lib/libcomponent/libcomponent.so
+	rm /usr/local/lib/linum/libcomponent.so
 
 
 
