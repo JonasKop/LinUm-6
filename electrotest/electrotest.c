@@ -14,13 +14,14 @@
 #include <errno.h>
 #include <string.h>
 
-#include <libresistance>
-#include <libpower>
-#include <libcomponent>
+#include "../libresistance/libresistance.h"
+#include "../libpower/libpower.h" 
+#include "../libcomponent/libcomponent.h"
 
 #include "electrotest.h"
+
 void terror(char *str) {
-    fprintf(stdin, "Error: %s\n", str);
+    fprintf(stdout, "Error: %s\n", str);
     exit(1);
 }
 
@@ -32,7 +33,7 @@ void terror(char *str) {
  */
 void prompt(char *str, char *buf) {
     printf("%s", str);
-    if (fgets(buf, sizeof(buf), stdin)) {
+    if (!fgets(buf, sizeof(buf), stdin)) {
         terror("Kunde inte läsa in data");
     }
 }
@@ -46,7 +47,7 @@ void prompt(char *str, char *buf) {
  * @param count pointer to where the nr of components should be stored
  * @param arr pointer to array where the components should be stored
  */
-void get_input(float *vol, char *type, int *count, float *arr) {
+void * get_input(float *vol, char *type, int *count, float *arr) {
     char buffer[BUFSIZE], *p;
     prompt("Ange spänningskälla i V: ", buffer);
     *vol = strtof(buffer, &p);
@@ -55,9 +56,8 @@ void get_input(float *vol, char *type, int *count, float *arr) {
     }
 
     prompt("Ange koppling[S | P]: ", buffer);
-
-    if (strlen(buffer) != 1 || buffer[0] == 'S' || buffer[0] == 's' ||
-        buffer[0] == 'v' || buffer[0] == 'V') {
+    if (strlen(buffer) != 2 || (buffer[0] != 'S' && buffer[0] != 's' && 
+        buffer[0] != 'p' && buffer[0] != 'P')) {
         terror("Kopplingen måste vara S eller P");
     }
     *type = buffer[0];
@@ -72,17 +72,19 @@ void get_input(float *vol, char *type, int *count, float *arr) {
     if (arr == NULL) {
         terror("Kunde inte allokera minne");
     }
-
     for (int i = 0; i < *count; ++i) {
         printf("Komponent %d i ohm: ", i + 1);
         if (fgets(buffer, sizeof(buffer), stdin) == NULL) {
             terror("Kunde inte läsa in data");
-        }
+        }    
         arr[i] = strtof(buffer, &p);
         if (arr[i] == 0 && (errno != 0 || p == buffer)) {
             terror("Spänningen måste vara ett tal");
         }
     }
+
+    return arr;
+
 }
 
 /**
@@ -111,7 +113,7 @@ int main() {
     float vol, *arr = NULL;
     char type;
     int count;
-    get_input(&vol, &type, &count, arr);
+    arr = get_input(&vol, &type, &count, arr);
 
     float res_arr[3];
     float res = calc_resistance(count, type, arr);
