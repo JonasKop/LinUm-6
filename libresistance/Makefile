@@ -14,7 +14,7 @@ libresistance.so: libresistance.c libresistance.h
 all: libresistance.so
 
 clean:
-	rm *.so
+	rm -f *.so
 
 install:
 	mkdir -p /usr/local/lib/linum
