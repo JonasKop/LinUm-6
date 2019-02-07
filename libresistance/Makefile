@@ -8,7 +8,7 @@ CC=gcc
 INCDIR=.
 CFLAGS=-I$(INCDIR) -shared -fPIC
 
-libresistance.so:
+libresistance.so: libresistance.c libresistance.h
 	$(CC) $(CFLAGS) libresistance.c -o libresistance.so
 
 all: libresistance.so
