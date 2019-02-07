@@ -17,10 +17,10 @@ clean:
 	rm *.so
 
 install:
-	mkdir -p /usr/local/lib/libresistance
-	cp libresistance.so /usr/local/lib/libresistance
-	chown root.root /usr/local/lib/libresistance
-	chmod 644 /usr/local/lib/libresistance/libresistance.so
+	mkdir -p /usr/local/lib/linum
+	cp libresistance.so /usr/local/lib/linum
+	chown root.root /usr/local/lib/linum
+	chmod 644 /usr/local/lib/linum/libresistance.so
 
 uninstall:
-	rm /usr/local/lib/libresistance/libresistance.so
+	rm /usr/local/lib/linum/libresistance.so
