@@ -13,7 +13,7 @@ libpower.so: libpower.c libpower.h
 	$(CC) $(CFLAGS) libpower.c -o libpower.so
 
 clean:
-	rm *.so *.o *.gch
+	rm *.so
 
 install:
 	chmod 644 libpower.so
