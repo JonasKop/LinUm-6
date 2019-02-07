@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <ctype.h>
 
 #include "../libresistance/libresistance.h"
 #include "../libpower/libpower.h" 
@@ -60,7 +61,7 @@ void * get_input(float *vol, char *type, int *count, float *arr) {
         buffer[0] != 'p' && buffer[0] != 'P')) {
         terror("Kopplingen måste vara S eller P");
     }
-    *type = buffer[0];
+    *type = toupper(buffer[0]);
 
     prompt("Antal komponenter: ", buffer);
     *count = (int) strtol(buffer, &p, 10);
