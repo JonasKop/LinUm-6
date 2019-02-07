@@ -17,6 +17,8 @@ TLIBDIR=-L../libpower -L../libresistance -L../libcomponent
 TRPATH=-Wl,-rpath=../libpower,-rpath=../libresistance,-rpath=../libcomponent
 TCFLAGS=$(TRPATH) $(LFLAGS) $(TLIBDIR)
 
+all: local
+
 electrotest: electrotest.c electrotest.h
 	$(CC) electrotest.c -o electrotest $(CFLAGS)
 
@@ -54,11 +56,10 @@ uninstall:
 	+$(MAKE) uninstall -C ../libresistance
 	+$(MAKE) uninstall -C ../libcomponent
 
-local:
+local: 
 	+$(MAKE) -C ../libpower
 	+$(MAKE) -C ../libresistance
 	+$(MAKE) -C ../libcomponent
 	$(CC) electrotest.c -o electrotest $(TCFLAGS)
 
-all: local 
 
