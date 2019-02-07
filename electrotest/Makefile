@@ -2,7 +2,7 @@
 # Övning 6. Bibliotek
 # libresistance.so
 # VT2019
-# David Sandquist, Jonas Sjödin, Magnus Sjögren
+# David Sandquist, Jonas Sjödin, Magnus Sjögren 
 
 CC=gcc
 DEBUG=-g
