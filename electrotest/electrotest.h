@@ -21,7 +21,7 @@ void prompt(char *str, char *buf);
  * @param count pointer to where the nr of components should be stored
  * @param arr pointer to array where the components should be stored
  */
-void get_input(float *vol, char *type, int *count, float *arr);
+void * get_input(float *vol, char *type, int *count, float *arr);
 
 /**
  * Prints the result of the calculations
