@@ -100,13 +100,13 @@ void print_result(float res, float pow, float *res_arr, int res_arr_size) {
     printf("Ersättningsresistans: %.1f ohm\n", res);
     printf("Effekt: %.2f W\n", pow);
 
-    printf("Ersättningsresistanser i E12-serien kopplade i serie: ");
+    printf("Ersättningsresistanser i E12-serien kopplade i serie:\n");
     if (res_arr_size == 0) {
         printf("0\n");
         return;
     }
     for (int i = 0; i < res_arr_size; ++i) {
-        printf("%.0f%s", res_arr[i], i != res_arr_size - 1 ? ", " : "\n");
+        printf("%.0f\n", res_arr[i]);
     }
 }
 
