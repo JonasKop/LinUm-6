@@ -36,6 +36,7 @@ int e_resistance(float orig_resistance, float *res_array) {
         res_array[i] = size * values[j - 1];
         left_val -= res_array[i];
         if (left_val < 1) {
+            i++;
             break;
         }
     }
