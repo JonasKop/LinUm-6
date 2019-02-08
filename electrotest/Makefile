@@ -12,10 +12,10 @@ RPATH=-Wl,-rpath=$(LIBDIR)
 LFLAGS=-lcomponent -lpower -lresistance
 CFLAGS=$(RPATH) $(LFLAGS) -L$(LIBDIR)
 
-# Local test with no install
-TLIBDIR=-L../libpower -L../libresistance -L../libcomponent
-TRPATH=-Wl,-rpath=../libpower,-rpath=../libresistance,-rpath=../libcomponent
-TCFLAGS=$(TRPATH) $(LFLAGS) $(TLIBDIR)
+# make all
+ALIBDIR=-L./linum
+ARPATH=-Wl,-rpath=./linum
+ACFLAGS=$(ARPATH) $(LFLAGS) $(ALIBDIR)
 
 all: local
 
@@ -60,6 +60,8 @@ local:
 	+$(MAKE) -C ../libpower
 	+$(MAKE) -C ../libresistance
 	+$(MAKE) -C ../libcomponent
-	$(CC) electrotest.c -o electrotest $(TCFLAGS)
-
+	cp ../libpower/libpower.so ./linum
+	cp ../libresistance/libresistance.so ./linum
+	cp ../libcomponent/libcomponent.so ./linum
+	$(CC) electrotest.c -o electrotest $(ACFLAGS)
 
