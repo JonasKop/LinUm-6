@@ -106,7 +106,7 @@ void print_result(float res, float pow, float *res_arr, int res_arr_size) {
         return;
     }
     for (int i = 0; i < res_arr_size; ++i) {
-        printf("%.1f%s", res_arr[i], i != res_arr_size - 1 ? ", " : "\n");
+        printf("%.0f%s", res_arr[i], i != res_arr_size - 1 ? ", " : "\n");
     }
 }
 
