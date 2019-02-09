@@ -97,8 +97,8 @@ void * get_input(float *vol, char *type, int *count, float *arr) {
  * @param res_arr_size the size of res_arr
  */
 void print_result(float res, float pow, float *res_arr, int res_arr_size) {
-    printf("Ersättningsresistans: %.1f ohm\n", res);
-    printf("Effekt: %.2f W\n", pow);
+    printf("Ersättningsresistans:\n%.1f ohm\n", res);
+    printf("Effekt:\n%.2f W\n", pow);
 
     printf("Ersättningsresistanser i E12-serien kopplade i serie:\n");
     if (res_arr_size == 0) {
