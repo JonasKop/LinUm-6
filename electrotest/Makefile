@@ -60,6 +60,7 @@ local:
 	+$(MAKE) -C ../libpower
 	+$(MAKE) -C ../libresistance
 	+$(MAKE) -C ../libcomponent
+	mkdir -p ./linum
 	cp ../libpower/libpower.so ./linum
 	cp ../libresistance/libresistance.so ./linum
 	cp ../libcomponent/libcomponent.so ./linum
