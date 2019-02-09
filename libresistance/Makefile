@@ -5,8 +5,7 @@
 # Magnus Sjögren
 
 CC=gcc
-INCDIR=.
-CFLAGS=-I$(INCDIR) -shared -fPIC
+CFLAGS= -shared -fPIC
 
 libresistance.so: libresistance.c libresistance.h
 	$(CC) $(CFLAGS) libresistance.c -o libresistance.so
